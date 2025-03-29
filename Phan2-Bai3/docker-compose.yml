@@ -1,0 +1,25 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword # Mật khẩu root
+      MYSQL_DATABASE: mydb # Tạo sẵn database
+    volumes:
+      - mysql_data:/var/lib/mysql # Lưu dữ liệu MySQL
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql # Phụ thuộc vào service mysql
+    environment:
+      PMA_HOST: mysql # Kết nối tới MySQL container
+      PMA_PORT: 3306 # Cổng MySQL
+      PMA_USER: root # User đăng nhập PHPMyAdmin (có thể dùng user khác)
+      PMA_PASSWORD: rootpassword # Mật khẩu trùng với MySQL root
+    ports:
+      - "8081:80" # Map cổng 8081 (host) → 80 (container)
+    restart: unless-stopped
+
+volumes:
+  mysql_data: # Volume lưu dữ liệu MySQL

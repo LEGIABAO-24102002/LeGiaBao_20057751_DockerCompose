@@ -1,0 +1,16 @@
+services:
+  service1:
+    image: alpine
+    networks:
+      - my-network
+    command: ping service2
+
+  service2:
+    image: alpine
+    networks:
+      - my-network
+    command: ping service1
+
+networks:
+  my-network:
+    driver: bridge

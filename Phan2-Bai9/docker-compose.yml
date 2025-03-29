@@ -1,0 +1,5 @@
+services:
+  flask-app:
+    build: ./flask-app # Thư mục chứa Dockerfile và code Flask
+    ports:
+      - "5000:5000"

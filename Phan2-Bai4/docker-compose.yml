@@ -1,0 +1,11 @@
+services:
+  node-app:
+    build: . # Build từ Dockerfile trong thư mục hiện tại
+    ports:
+      - "3000:3000" # Map cổng 3000 (host) → 3000 (container)
+    volumes:
+      - .:/usr/src/app # Mount code để tự động reload (dùng cho dev)
+      - /usr/src/app/node_modules # Giữ node_modules riêng
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped

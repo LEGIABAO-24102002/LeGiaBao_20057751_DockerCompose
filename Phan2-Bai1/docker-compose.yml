@@ -1,0 +1,8 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - C:\Users\daba0\Desktop\LeGiaBao_20057751_DockerCompose\Phan2-Bai1:/usr/share/nginx/html
+    restart: unless-stopped

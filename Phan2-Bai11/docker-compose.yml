@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - postgres
+    ports:
+      - "8083:8080"
+
+volumes:
+  postgres_data:

@@ -1,0 +1,5 @@
+services:
+  frontend:
+    build: ./react-app # Thư mục chứa Dockerfile React
+    ports:
+      - "80:80"
